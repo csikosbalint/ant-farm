@@ -18,6 +18,24 @@ public class Service {
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public String service(@RequestBody String a) {
-        return "service: " + a + ma.call();
+        ant.farm.b.api.ServiceApi bapi = new ant.farm.b.api.ServiceApi();
+        ant.farm.c.api.ServiceApi capi = new ant.farm.c.api.ServiceApi();
+        String bcall = "error with b";
+        String ccall = "error with c";
+        try {
+            bcall = bapi.serviceUsingGET("fromA");
+        } catch (ant.farm.b.ApiException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            ccall = capi.serviceUsingGET("fromA");
+        } catch (ant.farm.c.ApiException e) {
+            e.printStackTrace();
+        }
+
+        return "service: (from moda) " + ma.call() + "\n" +
+                "service: (from c) " + ccall +
+                "service: (from b) " + bcall;
     }
 }

@@ -22,6 +22,15 @@ public class Service {
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public String service(@RequestBody String a) {
-        return "service: " + a + mb.call() + mx.call();
+        ant.farm.c.api.ServiceApi capi = new ant.farm.c.api.ServiceApi();
+        String ccall = "error with c";
+
+        try {
+            ccall = capi.serviceUsingGET("fromA");
+        } catch (ant.farm.c.ApiException e) {
+            e.printStackTrace();
+        }
+
+        return "service: " + a + mb.call() + mx.call() + ccall;
     }
 }
