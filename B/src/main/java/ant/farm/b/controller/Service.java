@@ -26,7 +26,7 @@ public class Service {
         String ccall = "error with c";
 
         try {
-            ccall = capi.serviceUsingGET("fromA");
+            ccall = capi.serviceUsingGET("fromC");
         } catch (ant.farm.c.ApiException e) {
             e.printStackTrace();
         }

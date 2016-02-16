@@ -23,18 +23,18 @@ public class Service {
         String bcall = "error with b";
         String ccall = "error with c";
         try {
-            bcall = bapi.serviceUsingGET("fromA");
+            bcall = bapi.serviceUsingGET("fromB");
         } catch (ant.farm.b.ApiException e) {
             e.printStackTrace();
         }
 
         try {
-            ccall = capi.serviceUsingGET("fromA");
+            ccall = capi.serviceUsingGET("fromC");
         } catch (ant.farm.c.ApiException e) {
             e.printStackTrace();
         }
 
-        return "service: (from moda) " + ma.call() + "\n" +
+        return "service: (from ma) " + ma.call() + "\n" +
                 "service: (from c) " + ccall +
                 "service: (from b) " + bcall;
     }
